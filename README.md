@@ -61,11 +61,11 @@ Now that you have covered the basics of CDE, spend a few moments familiarizing y
 
 The Home Page provides a high level overview of all CDE Services and Clusters. At the top, you have shortcuts to creating CDE Jobs and Resources. Scroll down to the CDE Virtual Clusters section and notice that all Virtual Clusters and each associated CDP Environment / CDE Service are shown.
 
-![alt text](../img/cde_lp_1.png)
+![alt text](./img/cde_lp_1.png)
 
 Next, open the Administration page on the left tab. This page also shows CDE Services on the left and associated Virtual Clusters on the right.
 
-![alt text](../img/cde_service_1.png)
+![alt text](./img/cde_service_1.png)
 
 Open the CDE Service Details page and notice the following key information and links:
 
@@ -75,17 +75,17 @@ Open the CDE Service Details page and notice the following key information and l
 * Graphana Charts. Click on this link to obtain a dashboard of running Service Kubernetes resources.
 * Resource Scheduler. Click on this link to view the Yunikorn Web UI.
 
-![alt text](../img/cde_service_2.png)
+![alt text](./img/cde_service_2.png)
 
 Scroll down and open the Configurations tab. Notice that this is where Instance Types and Instance Autoscale ranges are defined.
 
-![alt text](../img/cde_service_3a.png)
+![alt text](./img/cde_service_3a.png)
 
 To learn more about other important service configurations please visit [Enabling a CDE Service](https://docs.cloudera.com/data-engineering/cloud/enable-data-engineering/topics/cde-enable-data-engineering.html) in the CDE Documentation.
 
 Navigate back to the Administration page and open a Virtual Cluster's Cluster Details page.
 
-![alt text](../img/cde_lp_2.png)
+![alt text](./img/cde_lp_2.png)
 
 This view includes other important cluster management information. From here you can:
 
@@ -95,7 +95,7 @@ This view includes other important cluster management information. From here you
 
 Open the Configuration tab. Notice that CPU and Memory autoscale ranges, Spark version, and Iceberg options are set here.
 
-![alt text](../img/cde_lp_3.png)
+![alt text](./img/cde_lp_3.png)
 
 To learn more about CDE Architecture please visit [Creating and Managing Virtual Clusters](https://docs.cloudera.com/data-engineering/cloud/manage-clusters/topics/cde-create-cluster.html) and [Recommendations for Scaling CDE Deployments](https://docs.cloudera.com/data-engineering/cloud/deployment-architecture/topics/cde-general-scaling.html)
 
@@ -138,11 +138,11 @@ CDE Resources can be of type "File", "Python", or "Custom Runtime". You will sta
 
 To create a File Resource, from the CDE Home Page click on "Create New" in the "Resources" -> "File" section.
 
-![alt text](../img/cde_res_1.png)
+![alt text](./img/cde_res_1.png)
 
 Pick your Spark 3 / Iceberg-enabled CDE Virtual Cluster and name your Resource after your username or a unique ID.
 
-![alt text](../img/cde_res_2.png)
+![alt text](./img/cde_res_2.png)
 
 Upload all files from the "cde_ace_hol/cde_spark_jobs" folder. Then, navigate back to the Resources tab, reopen the resource and upload the two Airflow DAGs located in the "cde_ace_hol/cde_airflow_jobs" folders. Finally, reopen the resource and upload the "utils.py" file contained in the "cde_ace_hol/resources_files" folder.
 
@@ -167,21 +167,21 @@ utils.py
 
 To create a Python Resource, navigate back to the CDE Home Page and click on "Create New" in the "Resources" -> "Python" section.
 
-![alt text](../img/cde_res_4.png)
+![alt text](./img/cde_res_4.png)
 
 Ensure to select the same CDE Virtual Cluster. Name the Python CDE Resource and leave the pipy mirror field blank.
 
-![alt text](../img/cde_res_5.png)
+![alt text](./img/cde_res_5.png)
 
 Upload the "requirements.txt" file provided in the "cde_ace_hol/resources_files" folder.
 
-![alt text](../img/cde_res_6.png)
+![alt text](./img/cde_res_6.png)
 
 Notice the CDE Resource is now building the Python Virtual Environment. After a few moments the build will complete and you will be able to validate the libraries used.
 
-![alt text](../img/cde_res_7.png)
+![alt text](./img/cde_res_7.png)
 
-![alt text](../img/cde_res_8.png)
+![alt text](./img/cde_res_8.png)
 
 To learn more about CDE Resources please visit [Using CDE Resources](https://docs.cloudera.com/data-engineering/cloud/use-resources/topics/cde-python-virtual-env.html) in the CDE Documentation.
 
@@ -191,47 +191,47 @@ Next we will create four CDE Jobs of type Spark using scripts "01_Pre_Setup.py",
 
 Navigate back to the CDE Home Page. Click on "Create New" in the "Jobs" -> "Spark" section.
 
-![alt text](../img/cde_jobs_1.png)
+![alt text](./img/cde_jobs_1.png)
 
 Select your CDE Virtual Cluster and assign "O1_Setup" as the Job Name.
 
-![alt text](../img/cde_jobs_2.png)
+![alt text](./img/cde_jobs_2.png)
 
 Scroll down; ensure to select "File" from the radio button and click on "Select from Resource" in the "Application File" section. A window will open with the contents loaded in your File Resource. Select script "01_Pre_Setup.py".
 
-![alt text](../img/cde_jobs_3.png)
+![alt text](./img/cde_jobs_3.png)
 
-![alt text](../img/cde_jobs_4.png)
+![alt text](./img/cde_jobs_4.png)
 
 Scroll down again to the "Resources" section and notice that your File Resource has been mapped to the Job by default. This allows the PySpark script to load modules in the same Resource such as the ones contained in the "utils.py" file.
 
 Scroll to the bottom and click on the "Create and Run" blue icon.
 
-![alt text](../img/cde_jobs_5.png)
+![alt text](./img/cde_jobs_5.png)
 
 You will be automatically taken to the Jobs tab where the Job will now be listed at the top. Open the Job Runs tab on the left pane and validate that the CDE Spark Job is executing.
 
-![alt text](../img/cde_jobs_6.png)
+![alt text](./img/cde_jobs_6.png)
 
-![alt text](../img/cde_jobs_7.png)
+![alt text](./img/cde_jobs_7.png)
 
 When complete, a green checkmark will appear on the left side. Click on the Job Run number to explore further.
 
-![alt text](../img/cde_jobs_8.png)
+![alt text](./img/cde_jobs_8.png)
 
 The Job Run is populated with Metadata, Logs, and the Spark UI. This information is persisted and can be referenced at a later point in time.
 
 The Configuration tab allows you to verify the script and resources used by the CDE Spark Job.
 
-![alt text](../img/cde_jobs_8a.png)
+![alt text](./img/cde_jobs_8a.png)
 
 The Logs tab contains rich logging information. For example, you can verify your code output under "Logs" -> "Driver" -> "StdOut".
 
-![alt text](../img/cde_jobs_9.png)
+![alt text](./img/cde_jobs_9.png)
 
 The Spark UI allows you to visualize resources, optimize performance and troubleshoot your Spark Jobs.
 
-![alt text](../img/cde_jobs_10.png)
+![alt text](./img/cde_jobs_10.png)
 
 Now that you have learned how to create a CDE Spark Job with the CDE UI, repeat the same process with the following scripts and settings. Leave all other options to their default. Allow each job to complete before creating and executing a new one.
 
@@ -311,23 +311,23 @@ Finally, modify lines 60 and 61 to assign a start and end date that takes place 
 
 Upload the updated script to your CDE Files Resource. Then navigate back to the CDE Home Page and create a new CDE Job of type Airflow.
 
-![alt text](../img/cde_airflow_1.png)
+![alt text](./img/cde_airflow_1.png)
 
 As before, select your Virtual Cluster and Job name. Then create and execute.
 
-![alt text](../img/cde_airflow_2.png)
+![alt text](./img/cde_airflow_2.png)
 
-![alt text](../img/cde_airflow_3.png)
+![alt text](./img/cde_airflow_3.png)
 
 Navigate to the Job Runs tab and notice that the Airflow DAG is running. While in progress, navigate back to the CDE Home Page, scroll down to the Virtual Clusters section and open the Virtual Cluster Details. Then, open the Airflow UI.
 
-![alt text](../img/cde_airflow_4.png)
+![alt text](./img/cde_airflow_4.png)
 
 Familiarize yourself with the Airflow UI. Then, open the Dag Runs page and validate the CDE Airflow Job's execution.
 
-![alt text](../img/cde_airflow_5.png)
+![alt text](./img/cde_airflow_5.png)
 
-![alt text](../img/cde_airflow_6.png)
+![alt text](./img/cde_airflow_6.png)
 
 ##### Executing Airflow Logic Dag
 
@@ -337,17 +337,17 @@ Using "07-Airflow-Logic-DAG.py" you will create a new CDE Airflow Job with other
 
 In order to use it, first you have to set up a Connection to the endpoint referenced at line 110 in the DAG. Navigate back to the CDE Administration tab, open your Virtual Cluster's "Cluster Details" and then click on the "Airflow" icon to reach the Airflow UI.
 
-![alt text](../img/airflow_connection_0.png)
+![alt text](./img/airflow_connection_0.png)
 
-![alt text](../img/airflow_connection_1.png)
+![alt text](./img/airflow_connection_1.png)
 
 Open Airflow Connections under the Admin dropdown as shown below.
 
-![alt text](../img/airflow_connection_2.png)
+![alt text](./img/airflow_connection_2.png)
 
 Airflow Connections allow you to predefine connection configurations so that they can be referenced within a DAG for various purposes. In our case, we will create a new connection to access the "Random Joke API" and in particular the "Programming" endpoint.
 
-![alt text](../img/airflow_connection_3.png)
+![alt text](./img/airflow_connection_3.png)
 
 Fill out the following fields as shown below and save.
 
@@ -357,7 +357,7 @@ Connection Type: HTTP
 Host: https://official-joke-api.appspot.com/
 ```
 
-![alt text](../img/airflow_connection_4.png)
+![alt text](./img/airflow_connection_4.png)
 
 Now open "07-Airflow-Logic-DAG.py" and familiarize yourself with the code. Some of the most notable aspects of this DAG include:
 
@@ -529,17 +529,17 @@ The CDE CLI provides a similar although not identical way of running "spark-subm
 
 Navigate to the CDP Management Console and download your user credentials file. The credentials file includes a CDP Access Key ID and a CDP Private Key.
 
-![alt text](../img/mgt_console1.png)
+![alt text](./img/mgt_console1.png)
 
-![alt text](../img/mgt_console2.png)
+![alt text](./img/mgt_console2.png)
 
-![alt text](../img/mgt_console3.png)
+![alt text](./img/mgt_console3.png)
 
-![alt text](../img/mgt_console4.png)
+![alt text](./img/mgt_console4.png)
 
 Next, navigate to the CDE Virtual Cluster Details and copy the JOBS_API_URL.
 
-![alt text](../img/jobsapiurl.png)
+![alt text](./img/jobsapiurl.png)
 
 Launch the example Docker container.
 
@@ -575,11 +575,11 @@ spark-submit \
 
 Shortly you should get output in your terminal including a Job Run ID confirming successful job submission to CDE. In the screenshot example below the Job Run ID is 9.
 
-![alt text](../img/job_submit_confirm1.png)
+![alt text](./img/job_submit_confirm1.png)
 
 Navigate to your CDE Virtual Cluster Job Runs page and validate the job is running or has run successfully.
 
-![alt text](../img/job_submit_confirm3.png)
+![alt text](./img/job_submit_confirm3.png)
 
 >**⚠ Warning**  
 >If you are unable to run the spark-submit you may have to remove the tls setting from config.yaml. In other words, completely erase line 4.
@@ -604,15 +604,15 @@ CDE currently supports CDW operations for ETL workloads in Apache Hive virtual w
 
 Navigate to the Cloudera Data Warehouse Overview page by clicking the Data Warehouse tile in the Cloudera Data Platform (CDP) management console.
 
-![alt text](../img/bonus1_step00_A.png)
+![alt text](./img/bonus1_step00_A.png)
 
 In the Virtual Warehouses column, find the warehouse you want to connect to.
 
-![alt text](../img/bonus1_step00_B.png)
+![alt text](./img/bonus1_step00_B.png)
 
 Click the three-dot menu for the selected warehouse, and then click Copy JDBC URL.
 
-![alt text](../img/bonus1_step00_C.png)
+![alt text](./img/bonus1_step00_C.png)
 
 Paste the URL into a text editor, and make note of the hostname. For example, starting with the following url the hostname would be:
 
@@ -628,11 +628,11 @@ Navigate to the Cloudera Data Engineering Overview page by clicking the Data Eng
 
 In the CDE Services column, select the service containing the virtual cluster you are using, and then in the Virtual Clusters column, click  Cluster Details for the virtual cluster. Click AIRFLOW UI.
 
-![alt text](../img/bonus1_step00_D.png)
+![alt text](./img/bonus1_step00_D.png)
 
 From the Airflow UI, click the Connection link from the Admin tab.
 
-![alt text](../img/bonus1_step00_E.png)
+![alt text](./img/bonus1_step00_E.png)
 
 Click the plus sign to add a new record, and then fill in the fields:
 
@@ -644,7 +644,7 @@ Click the plus sign to add a new record, and then fill in the fields:
 
 6. Click Save.
 
-![alt text](../img/bonus1_step1.png)
+![alt text](./img/bonus1_step1.png)
 
 ##### Editing the DAG Python file
 
@@ -684,11 +684,11 @@ spark_step >> dw_step
 
 Next, create a new Airflow CDE Job named "CDW Dag". Upload the new DAG file to the same or a new CDE resource as part of the creation process.
 
-![alt text](../img/bonus1_step2.png)
+![alt text](./img/bonus1_step2.png)
 
 Navigate to the CDE Job Runs Page and open the run's Airflow UI. Then open the Tree View and validate that the job has succeeded.
 
-![alt text](../img/bonus1_step3.png)
+![alt text](./img/bonus1_step3.png)
 
 
 ### Bonus Lab 2: Using the CDE Airflow Editor to Build Airflow DAGs without Coding
@@ -697,37 +697,40 @@ You can use the CDE Airflow Editor to build DAGs without writing code. This is a
 
 From the CDE Jobs UI, create a new CDE Job of type Airflow as shown below. Ensure to select the "Editor" option. Then click create.
 
-![alt text](../img/bonus2_step00.png)
+![alt text](./img/bonus2_step00.png)
 
 From the Editor Canvas drag and drop the Shell Script action. This is equivalent to instantiating the BashOperator. Click on the icon on the canvas and an option window will appear on the right side. Enter the "dag start" in the Bash Command section.
 
-![alt text](../img/bonus2_step01.png)
+![alt text](./img/bonus2_step01.png)
 
 From the Canvas, drop two CDE Job Actions. Configure them with Job Name "sql_job". You already created this CDE Spark Job in part 2.
 
-![alt text](../img/bonus2_step02.png)
+![alt text](./img/bonus2_step02.png)
 
 Next, drag and drop a Python action. In the code section, add *print("DAG Terminated")* as shown below.
 
-![alt text](../img/bonus2_step03.png)
+![alt text](./img/bonus2_step03.png)
 
 Finally, complete the DAG by connecting each action.
 
-![alt text](../img/bonus2_step04.png)
+![alt text](./img/bonus2_step04.png)
 
 For each of the two CDE Jobs, open the action by clicking on the icon on the canvas. Select "Depends on Past" and then "all_success" in the "Trigger Rule" section.
 
-![alt text](../img/bonus2_step05.png)
+![alt text](./img/bonus2_step05.png)
 
 Execute the DAG and observe it from the CDE Job Runs UI.
 
-![alt text](../img/bonus2_step06.png)
+![alt text](./img/bonus2_step06.png)
 
-![alt text](../img/bonus2_step07.png)
+![alt text](./img/bonus2_step07.png)
 
 
 ### Conclusion
 
 Congratulations for making it to the end of this tutorial! We hope you enjoyed using CDE first hand. We recommend visiting the [Next Steps Section](https://github.com/pdefusco/CDE_Tour_ACE_HOL#next-steps) to continue your journey with CDE.
 
-![alt text](../img/cde_thankyou.png)
+![alt text](./img/cde_thankyou.png)
+
+
+
