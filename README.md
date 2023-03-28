@@ -233,8 +233,32 @@ The Spark UI allows you to visualize resources, optimize performance and trouble
 
 ![alt text](./img/cde_jobs_10.png)
 
-Now that you have learned how to create a CDE Spark Job with the CDE UI, repeat the same process with the following scripts and settings. Leave all other options to their default. Allow each job to complete before creating and executing a new one.
+>**Note**  
+>Your credentials are stored in parameters.conf
 
+To learn more about CDE Jobs please visit [Creating and Managing CDE Jobs](https://docs.cloudera.com/data-engineering/cloud/manage-jobs/topics/cde-create-job.html) in the CDE Documentation.
+
+## Part 2: Orchestrating Pipelines with Airflow
+
+#### Summary
+
+In this section you will build three Airflow jobs to schedule, orchestrate and monitor the execution of Spark Jobs and more.
+
+##### Airflow Concepts
+
+In Airflow, a DAG (Directed Acyclic Graph) is defined in a Python script that represents the DAGs structure (tasks and their dependencies) as code.
+
+For example, for a simple DAG consisting of three tasks: A, B, and C. The DAG can specify that A has to run successfully before B can run, but C can run anytime. Also that task A times out after 5 minutes, and B can be restarted up to 5 times in case it fails. The DAG might also specify that the workflow runs every night at 10pm, but should not start until a certain date.
+
+For more information about Airflow DAGs, see Apache Airflow documentation [here](https://airflow.apache.org/docs/apache-airflow/stable/concepts/dags.html). For an example DAG in CDE, see CDE Airflow DAG documentation [here](https://docs.cloudera.com/data-engineering/cloud/orchestrate-workflows/topics/cde-airflow-editor.html).
+
+The Airflow UI makes it easy to monitor and troubleshoot your data pipelines. For a complete overview of the Airflow UI, see  Apache Airflow UI documentation [here](https://airflow.apache.org/docs/apache-airflow/stable/ui.html).
+
+
+Now that we have learned how to run individual jobs, use the airflow editor to create a pipeline. For this first you have to add the individual jobs manually, and instead of creating&running them, click on the dropdown and just create them. Remember the job names. 
+ ![alt text](./img/create_job.png)
+
+After the following three jobs have been created: 
 ```
 Job Name: 02_EnrichData_ETL
 Type: Spark
@@ -253,8 +277,19 @@ Application File: 04_Sales_Report.py
 Job Resource(s): cde_hol_files
 ```
 
->**Note**  
->Your credentials are stored in parameters.conf
+Create an Airflow job with editor, see the following picture for the settings: 
+
+![alt text](./img/create_editor.png)
+
+Click on the “editor” on the next page, 
+Drag and place the CDE Jobs according to the picture and connect them in order. 
+When you have placed and connected them, select the job and under the “job name” on the right pane, set the job with the file written in orange color on top of each boxes.  
+
+![alt text](./img/create_dag.png)
+
+Click Save, and Run it! Under the job runs you will see the dag running, and also the individual jobs that it triggers. 
+
+Open the job logs and Airflow UI! 
 
 >**Note**  
 >The Iceberg Jars did not have to be loaded in the Spark Configurations. Iceberg is enabled at the Virtual Cluster level.
@@ -264,24 +299,6 @@ Job Resource(s): cde_hol_files
 
 To learn more about Iceberg in CDE please visit [Using Apache Iceberg in Cloudera Data Engineering](https://docs.cloudera.com/data-engineering/cloud/manage-jobs/topics/cde-using-iceberg.html).
 
-To learn more about CDE Jobs please visit [Creating and Managing CDE Jobs](https://docs.cloudera.com/data-engineering/cloud/manage-jobs/topics/cde-create-job.html) in the CDE Documentation.
-
-
-## Part 2: Orchestrating Pipelines with Airflow
-
-#### Summary
-
-In this section you will build three Airflow jobs to schedule, orchestrate and monitor the execution of Spark Jobs and more.
-
-##### Airflow Concepts
-
-In Airflow, a DAG (Directed Acyclic Graph) is defined in a Python script that represents the DAGs structure (tasks and their dependencies) as code.
-
-For example, for a simple DAG consisting of three tasks: A, B, and C. The DAG can specify that A has to run successfully before B can run, but C can run anytime. Also that task A times out after 5 minutes, and B can be restarted up to 5 times in case it fails. The DAG might also specify that the workflow runs every night at 10pm, but should not start until a certain date.
-
-For more information about Airflow DAGs, see Apache Airflow documentation [here](https://airflow.apache.org/docs/apache-airflow/stable/concepts/dags.html). For an example DAG in CDE, see CDE Airflow DAG documentation [here](https://docs.cloudera.com/data-engineering/cloud/orchestrate-workflows/topics/cde-airflow-editor.html).
-
-The Airflow UI makes it easy to monitor and troubleshoot your data pipelines. For a complete overview of the Airflow UI, see  Apache Airflow UI documentation [here](https://airflow.apache.org/docs/apache-airflow/stable/ui.html).
 
 ##### Executing Airflow Basic DAG
 
@@ -307,7 +324,7 @@ Finally, modify lines 60 and 61 to assign a start and end date that takes place 
 >CDE requires a unique DAG name for each CDE Airflow Job or will otherwise return an error upon job creation.
 
 >**⚠ Warning**   
-> If you don't edit the start and end date, the CDE Airflow Job might fail. The Start Date parameter must reflect a date in the past while the End Date must be in the future. If you are getting two identical Airflow Job runs you have set both dates in the past.  
+> If you don't edit the start and end date, the CDE Airflow Job might fail. The Start Date parameter must reflect a date in the past while the End Date must be in the future. If you are getting two identical Airflow Job runs you have set both dates in the past. 
 
 Upload the updated script to your CDE Files Resource. Then navigate back to the CDE Home Page and create a new CDE Job of type Airflow.
 
@@ -386,7 +403,6 @@ Finally, reupload the script to your CDE Files Resource. Create a new CDE Job of
 >Additionally, other operators including Python, HTTP, and Bash are available in CDE. If you want to learn more about Airflow in CDE, please reference [Using CDE Airflow](https://github.com/pdefusco/Using_CDE_Airflow).
 
 To learn more about CDE Airflow please visit [Orchestrating Workflows and Pipelines](https://docs.cloudera.com/data-engineering/cloud/orchestrate-workflows/topics/cde-airflow-editor.html) in the CDE Documentation.
-
 
 ## Part 3: Using the CDE CLI
 
