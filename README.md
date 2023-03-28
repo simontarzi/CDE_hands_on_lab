@@ -1,7 +1,4 @@
-# CDE_hands_on_lab
-Assets for CDE hands-on lab 
-
-# Step by Step Guide - ENG
+# Step by Step Guide - for the CDE hands-on lab
 
 ## Requirements
 
