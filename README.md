@@ -319,13 +319,8 @@ In addition, notice that credentials stored in parameters.conf are not available
 
 The "username" variable is read at line 64 to create a dag_name variable which in turn will be used at line 67 to assign a unique DAG name when instantiating the DAG object.
 
-Finally, modify lines 60 and 61 to assign a start and end date that takes place in the future.
-
 >**⚠ Warning**  
 >CDE requires a unique DAG name for each CDE Airflow Job or will otherwise return an error upon job creation.
-
->**⚠ Warning**   
-> If you don't edit the start and end date, the CDE Airflow Job might fail. The Start Date parameter must reflect a date in the past while the End Date must be in the future. If you are getting two identical Airflow Job runs you have set both dates in the past. 
 
 Upload the updated script to your CDE Files Resource. Then navigate back to the CDE Home Page and create a new CDE Job of type Airflow.
 
@@ -398,12 +393,12 @@ Finally, reupload the script to your CDE Files Resource. Create a new CDE Job of
 >The SimpleHttpOperator Operator can be used to interact with 3rd party systems and exchange data to and from a CDE Airflow Job run. For example you could trigger the execution of jobs outside CDP or execute CDE Airflow DAG logic based on inputs from 3rd party systems.
 
 >**Note**  
->You can use CDE Airflow to orchestrate SQL queries in CDW, the Cloudera Data Warehouse Data Service, with the Cloudera-supported  CDWOperator. If you want to learn more, please go to [Bonus Lab 1: Using CDE Airflow with CDW](https://github.com/pdefusco/CDE_Tour_ACE_HOL/blob/main/step_by_step_guides/english.md#bonus-lab-1-using-cde-airflow-with-cdw).
+>You can use CDE Airflow to orchestrate SQL queries in CDW, the Cloudera Data Warehouse Data Service, with the Cloudera-supported  CDWOperator. If you want to learn more, [please go to Paul De Fusco GitHub page for the original hands-on lab Bonus Lab 1: Using CDE Airflow with CDW](https://github.com/pdefusco/CDE_Tour_ACE_HOL/blob/main/step_by_step_guides/english.md#bonus-lab-1-using-cde-airflow-with-cdw). 
 
 >**Note**  
->Additionally, other operators including Python, HTTP, and Bash are available in CDE. If you want to learn more about Airflow in CDE, please reference [Using CDE Airflow](https://github.com/pdefusco/Using_CDE_Airflow).
+>Additionally, other operators including Python, HTTP, and Bash are available in CDE. If you want to learn more about Airflow in CDE, [please go to Paul De Fusco GitHub page - Using CDE Airflow](https://github.com/pdefusco/Using_CDE_Airflow).
 
-To learn more about CDE Airflow please visit [Orchestrating Workflows and Pipelines](https://docs.cloudera.com/data-engineering/cloud/orchestrate-workflows/topics/cde-airflow-editor.html) in the CDE Documentation.
+To learn more about CDE Airflow [please go to Paul De Fusco GitHub page Orchestrating Workflows and Pipelines](https://docs.cloudera.com/data-engineering/cloud/orchestrate-workflows/topics/cde-airflow-editor.html) in the CDE Documentation.
 
 ## Part 3: Using the CDE CLI
 
@@ -454,7 +449,7 @@ python cde_cli_jobs/00_cde_cli_install.py JOBS_API_URL CDP_WORKLOAD_USER
 This command will run the script as a simple Spark Submit. This is slightly different from creating a CDE Job of type Spark as the Job definition will not become reusable.
 
 >**⚠ Warning**  
-> The CLI commands below are meant to be copy/pasted in your terminal as-is and run from the "cde_tour_ace_hol" directory. However, you may have to update the script path in each command if you're running these from a different folder.
+> The CLI commands below are meant to be copy/pasted in your terminal as-is and run from the "CDE_hands_on_lab" directory. However, you may have to update the script path in each command if you're running these from a different folder.
 
 ```
 cde spark submit --conf "spark.pyspark.python=python3" cde_cli_jobs/01_pyspark-sql.py
@@ -601,151 +596,20 @@ Navigate to your CDE Virtual Cluster Job Runs page and validate the job is runni
 >**⚠ Warning**  
 >If you are unable to run the spark-submit you may have to remove the tls setting from config.yaml. In other words, completely erase line 4.
 
+## CDW Hands-on Lab
+Congratulations for the work you have done in CDE, now let’s take a look what we have done to the data. 
+In this chapter, we are going to use CDW, run queries on the preloaded, enriched, transformed data with Hue, and later on create data visualisation with the DataViz CDW built-in tool. 
 
-## Bonus Labs
+First get familiar CDW, open…
 
-So far you explored the core aspects of CDE Spark, Airflow and Iceberg. The following labs give you an opportunity to explore CDE in more detail.
-
-Each Bonus Lab can be run independently of another. In other words, you can run all or just a select few, and in any order that you prefer.
-
-
-### Bonus Lab 1: Using CDE Airflow with CDW
-
-You can use the CDWRunOperator to run CDW queries from a CDE Airflow DAG. This operator has been created and is fully supported by Cloudera.
-
-##### CDW Setup Steps
-
-Before we can use the operator in a DAG you need to establish a connection between CDE Airflow to CDW. To complete these steps, you must have access to a CDW virtual warehouse.
-
-CDE currently supports CDW operations for ETL workloads in Apache Hive virtual warehouses. To determine the CDW hostname to use for the connection:
-
-Navigate to the Cloudera Data Warehouse Overview page by clicking the Data Warehouse tile in the Cloudera Data Platform (CDP) management console.
-
-![alt text](./img/bonus1_step00_A.png)
-
-In the Virtual Warehouses column, find the warehouse you want to connect to.
-
-![alt text](./img/bonus1_step00_B.png)
-
-Click the three-dot menu for the selected warehouse, and then click Copy JDBC URL.
-
-![alt text](./img/bonus1_step00_C.png)
-
-Paste the URL into a text editor, and make note of the hostname. For example, starting with the following url the hostname would be:
-
-```
-Original URL: jdbc:hive2://hs2-aws-2-hive.env-k5ip0r.dw.ylcu-atmi.cloudera.site/default;transportMode=http;httpPath=cliservice;ssl=true;retries=3;
-
-Hostname: hs2-aws-2-hive.env-k5ip0r.dw.ylcu-atmi.cloudera.site
-```
-
-##### CDE Setup Steps
-
-Navigate to the Cloudera Data Engineering Overview page by clicking the Data Engineering tile in the Cloudera Data Platform (CDP) management console.
-
-In the CDE Services column, select the service containing the virtual cluster you are using, and then in the Virtual Clusters column, click  Cluster Details for the virtual cluster. Click AIRFLOW UI.
-
-![alt text](./img/bonus1_step00_D.png)
-
-From the Airflow UI, click the Connection link from the Admin tab.
-
-![alt text](./img/bonus1_step00_E.png)
-
-Click the plus sign to add a new record, and then fill in the fields:
-
-* Conn Id: Create a unique connection identifier, such as "cdw_connection".
-* Conn Type: Select Hive Client Wrapper.
-* Host: Enter the hostname from the JDBC connection URL. Do not enter the full JDBC URL.
-* Schema: default
-* Login: Enter your workload username and password.
-
-6. Click Save.
-
-![alt text](./img/bonus1_step1.png)
-
-##### Editing the DAG Python file
-
-Now you are ready to use the CDWOperator in your Airflow DAG. Open the "bonus-01_Airflow_CDW.py" script and familiarize yourself with the code.
-
-The Operator class is imported at line 47.
-
-```
-from cloudera.cdp.airflow.operators.cdw_operator import CDWOperator
-```
-
-An instance of the CDWOperator class is created at lines 78-86.
-
-```
-cdw_query = """
-show databases;
-"""
-
-dw_step3 = CDWOperator(
-    task_id='dataset-etl-cdw',
-    dag=example_dag,
-    cli_conn_id='cdw_connection',
-    hql=cdw_query,
-    schema='default',
-    use_proxy_user=False,
-    query_isolation=True
-)
-```
-
-Notice that the SQL syntax run in the CDW Virtual Warehouse is declared as a separate variable and then passed to the Operator instance as an argument. The Connection is also passed as an argument at line
-
-Finally, notice that task dependencies include both the spark and dw steps:
-
-```
-spark_step >> dw_step
-```
-
-Next, create a new Airflow CDE Job named "CDW Dag". Upload the new DAG file to the same or a new CDE resource as part of the creation process.
-
-![alt text](./img/bonus1_step2.png)
-
-Navigate to the CDE Job Runs Page and open the run's Airflow UI. Then open the Tree View and validate that the job has succeeded.
-
-![alt text](./img/bonus1_step3.png)
+TODO!!!!!!! 
 
 
-### Bonus Lab 2: Using the CDE Airflow Editor to Build Airflow DAGs without Coding
-
-You can use the CDE Airflow Editor to build DAGs without writing code. This is a great option if your DAG consists of a long sequence of CDE Spark or CDW Hive jobs.
-
-From the CDE Jobs UI, create a new CDE Job of type Airflow as shown below. Ensure to select the "Editor" option. Then click create.
-
-![alt text](./img/bonus2_step00.png)
-
-From the Editor Canvas drag and drop the Shell Script action. This is equivalent to instantiating the BashOperator. Click on the icon on the canvas and an option window will appear on the right side. Enter the "dag start" in the Bash Command section.
-
-![alt text](./img/bonus2_step01.png)
-
-From the Canvas, drop two CDE Job Actions. Configure them with Job Name "sql_job". You already created this CDE Spark Job in part 2.
-
-![alt text](./img/bonus2_step02.png)
-
-Next, drag and drop a Python action. In the code section, add *print("DAG Terminated")* as shown below.
-
-![alt text](./img/bonus2_step03.png)
-
-Finally, complete the DAG by connecting each action.
-
-![alt text](./img/bonus2_step04.png)
-
-For each of the two CDE Jobs, open the action by clicking on the icon on the canvas. Select "Depends on Past" and then "all_success" in the "Trigger Rule" section.
-
-![alt text](./img/bonus2_step05.png)
-
-Execute the DAG and observe it from the CDE Job Runs UI.
-
-![alt text](./img/bonus2_step06.png)
-
-![alt text](./img/bonus2_step07.png)
 
 
 ### Conclusion
 
-Congratulations for making it to the end of this tutorial! We hope you enjoyed using CDE first hand. We recommend visiting the [Next Steps Section](https://github.com/pdefusco/CDE_Tour_ACE_HOL#next-steps) to continue your journey with CDE.
+Congratulations for making it to the end of this tutorial! We hope you enjoyed using CDE&CDW first hand. We recommend visiting the [Next Steps Section in Paul’s GitHub](https://github.com/pdefusco/CDE_Tour_ACE_HOL#next-steps) to continue your journey with CDE.
 
 ![alt text](./img/cde_thankyou.png)
 
