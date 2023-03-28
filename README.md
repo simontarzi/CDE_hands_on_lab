@@ -299,6 +299,7 @@ Open the job logs and Airflow UI!
 
 To learn more about Iceberg in CDE please visit [Using Apache Iceberg in Cloudera Data Engineering](https://docs.cloudera.com/data-engineering/cloud/manage-jobs/topics/cde-using-iceberg.html).
 
+## Exercise - proceed with DAG’s and/or CDE CLI for the next 1 hour
 
 ##### Executing Airflow Basic DAG
 
@@ -751,4 +752,3 @@ Congratulations for making it to the end of this tutorial! We hope you enjoyed u
 
 ## Credit
 credit goes to @Paul de Fusco for creating this lab, this is a modified version of the original hands-on lab
-
