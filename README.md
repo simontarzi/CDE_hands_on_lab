@@ -733,4 +733,6 @@ Congratulations for making it to the end of this tutorial! We hope you enjoyed u
 ![alt text](./img/cde_thankyou.png)
 
 
+## Credit
+credit goes to @Paul de Fusco for creating this lab, this is a modified version of the original hands-on lab
 
