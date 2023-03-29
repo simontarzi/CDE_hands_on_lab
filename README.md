@@ -451,7 +451,7 @@ python cde_cli_jobs/00_cde_cli_install.py JOBS_API_URL CDP_WORKLOAD_USER
 This command will run the script as a simple Spark Submit. This is slightly different from creating a CDE Job of type Spark as the Job definition will not become reusable.
 
 >**⚠ Warning**  
-> The CLI commands below are meant to be copy/pasted in your terminal as-is and run from the "CDE_hands_on_lab" directory. However, you may have to update the script path in each command if you're running these from a different folder.
+> The CLI commands below are meant to be copy/pasted in your terminal as-is and run from the main hands-on lab directory. However, you may have to update the script path in each command if you're running these from a different folder.
 
 ```
 cde spark submit --conf "spark.pyspark.python=python3" cde_cli_jobs/01_pyspark-sql.py
