@@ -19,7 +19,7 @@ cd ~/Documents/cde_hol
 git clone https://github.com/simontarzi/CDE_hands_on_lab.git
 ```
 
-Alternatively, if you don't have `git` installed on your machine, create a folder on your local computer; navigate to [this URL](https://github.com/pdefusco/CDE_Tour_ACE_HOL.git) and manually download the files.
+Alternatively, if you don't have `git` installed on your machine, create a folder on your local computer; navigate to [this URL](https://github.com/simontarzi/CDE_hands_on_lab.git) and manually download the files.
 
 ## Introduction to the CDE Data Service
 
