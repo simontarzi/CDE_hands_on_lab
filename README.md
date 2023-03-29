@@ -526,7 +526,7 @@ cde resource --help
 
 To learn more about the CDE CLI please visit [Using the Cloudera Data Engineering command line interface](https://docs.cloudera.com/data-engineering/cloud/cli-access/topics/cde-cli.html) in the CDE Documentation.
 
-## Part 4: Using the Spark Migration Tool
+## BONUS - Part 4: Using the Spark Migration Tool - DOCKER REQUIRED
 
 #### Summary
 
