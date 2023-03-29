@@ -540,6 +540,9 @@ The CDE CLI provides a similar although not identical way of running "spark-subm
 >**⚠ Warning**  
 >This tutorial utilizes Docker to streamline the installation process of the Spark Submit Migration tool. If you don't have Docker installed on your machine you will have to go through [this tutorial by Vish Rajagopalan](https://github.com/SuperEllipse/cde-spark-submit-migration) instead.
 
+>**⚠ Warning**  
+>Ask the workshop lead to create the credential files, since there are no rights given to the users, at this point specific access can be given to the specific user as well to continue. 
+
 Navigate to the CDP Management Console and download your user credentials file. The credentials file includes a CDP Access Key ID and a CDP Private Key.
 
 ![alt text](./img/mgt_console1.png)
