@@ -305,6 +305,7 @@ To learn more about Iceberg in CDE please visit [Using Apache Iceberg in Clouder
 
 Open "05-Airflow-Basic-DAG.py", familiarize yourself with the code, and notice the following:
 
+* Username has to be entered manually at the top of the script, it can not be fetched from the parameters.conf
 * Airflow allows you to break up complex Spark Pipelines in different steps, isolating issues and optionally providing retry options.
 * The CDEJobRunOperator, BashOperator and PythonOperator are imported at lines 44-46. These allow you to execute a CDE Spark Job, Bash, and Python Code respectively all within the same workflow.
 * Each code block at lines 74, 80, 86, 92 and 102 instantiates an Operator. Each of them is stored as a variable named Step 1 through 5.
