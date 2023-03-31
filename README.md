@@ -636,18 +636,23 @@ Click on the connection that you have created and click on the Connection Explor
 
 ![alt text](./img/dataviz6.png)
 
+###### Create dahsboards
 Now you can go back to Home and choose New dashboard from the left side. 
-
-Alternatively, you can also define data models in the Dataviz, please take a look at the picture how you can join tables and define the data model. Look at the 02_EnrichData_ETL 
-CAR_SALES x CUSTOMER_DATA x GEO_DATA_XREF (zip) x CAR_INSTALLS (vin, model) x EXPERIMENTAL_MOTORS (serial_no)
-
-![alt text](./img/dataviz7.png)
 
 Create 2 dashboard with the following data, now we are going to visualise here from the table 
 Please perform the following:  GROUP TOTAL SALES BY MODEL
 GROUP TOTAL SALES BY GENDER
 use the table and the connection created for sales_report
 and then from experimental_motors_enriched table 
+
+###### Define Data Model - optional
+
+Alternatively, you can also define data models in the Dataviz, please take a look at the picture how you can join tables and define the data model. Look at the 02_EnrichData_ETL 
+CAR_SALES x CUSTOMER_DATA x GEO_DATA_XREF (zip) x CAR_INSTALLS (vin, model) x EXPERIMENTAL_MOTORS (serial_no)
+
+![alt text](./img/dataviz7.png)
+
+
 
 
 ### Conclusion
