@@ -603,11 +603,51 @@ Navigate to your CDE Virtual Cluster Job Runs page and validate the job is runni
 Congratulations for the work you have done in CDE, now let’s take a look what we have done to the data. 
 In this chapter, we are going to use CDW, run queries on the preloaded, enriched, transformed data with Hue, and later on create data visualisation with the DataViz CDW built-in tool. 
 
-First get familiar CDW, open…
+Now go to the main menu clicking the icon on the top left corner, and open CDW (Cloudera Data Warehouse). 
 
-TODO!!!!!!! 
+![alt text](./img/cdw1.png)
 
+You can see the created environment, as well as the enabled database catalog. Inside the Database catalogs you can provision different virtual warehouses, with executors. For each virtual warehouse you can select Impala or Hive, and you can click on HUE on the right upper corner to run queries and have basic visualisation per virtual warehouse. 
 
+![alt text](./img/cdw2.png)
+
+Now on the left side, you can notice there is a row under Virtual Warehouses, called Data Visualisation. 
+This solution is called Dataviz, please select it, and on the right you will see the the deployed Dataviz instances. Please use the assigned environment. 
+
+![alt text](./img/dataviz1.png)
+
+on the next page, click on “Open Data Visualisation”. 
+
+![alt text](./img/dataviz2.png)
+
+First, you have to create a connection to a table, hit the connection main tile: 
+
+![alt text](./img/dataviz3.png)
+
+Click On New Connection
+
+![alt text](./img/dataviz4.png)
+
+Select CDW Hive as the connection type, and select the assigned CDW warehouse from the dropdown, this is the only thing you have to do, hit test and wait for the confirmation! 
+
+![alt text](./img/dataviz5.png)
+
+Click on the connection that you have created and click on the Connection Explorer, find you tables and now you can add your dataset, we will use 2 different dataset in this lab, experimental_motors_enriched and sales_report. 
+
+![alt text](./img/dataviz6.png)
+
+Now you can go back to Home and choose New dashboard from the left side. 
+
+Alternatively, you can also define data models in the Dataviz, please take a look at the picture how you can join tables and define the data model. Look at the 02_EnrichData_ETL 
+CAR_SALES x CUSTOMER_DATA x GEO_DATA_XREF (zip) x CAR_INSTALLS (vin, model) x EXPERIMENTAL_MOTORS (serial_no)
+
+![alt text](./img/dataviz7.png)
+
+Create 2 dashboard with the following data, now we are going to visualise here from the table 
+Please perform the following:  GROUP TOTAL SALES BY MODEL
+GROUP TOTAL SALES BY GENDER
+use the table and the connection created for sales_report
+and then from experimental_motors_enriched table 
 
 
 ### Conclusion
