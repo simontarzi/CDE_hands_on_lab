@@ -620,6 +620,8 @@ on the next page, click on “Open Data Visualisation”.
 
 ![alt text](./img/dataviz2.png)
 
+### Connection to CDW Virtual warehouse
+
 First, you have to create a connection to a table, hit the connection main tile: 
 
 ![alt text](./img/dataviz3.png)
@@ -636,7 +638,7 @@ Click on the connection that you have created and click on the Connection Explor
 
 ![alt text](./img/dataviz6.png)
 
-###### Create dahsboards
+### Create dashboards
 Now you can go back to Home and choose New dashboard from the left side. 
 
 Create 2 dashboard with the following data, now we are going to visualise here from the table 
@@ -645,7 +647,7 @@ GROUP TOTAL SALES BY GENDER
 use the table and the connection created for sales_report
 and then from experimental_motors_enriched table 
 
-###### Define Data Model - optional
+##### Define Data Model - optional
 
 Alternatively, you can also define data models in the Dataviz, please take a look at the picture how you can join tables and define the data model. Look at the 02_EnrichData_ETL 
 CAR_SALES x CUSTOMER_DATA x GEO_DATA_XREF (zip) x CAR_INSTALLS (vin, model) x EXPERIMENTAL_MOTORS (serial_no)
